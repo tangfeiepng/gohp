@@ -1,38 +1,25 @@
-# go-gin框架
+# gohp
+一个继承了 laravel 思想的 golang web 框架
 
-#### 介绍
-基于gin框架封装自己风格的日志管理，数据库连接，异常捕捉，传参验证，配置文件读取，希望有人可以看到并能给出更好的构建思路，我的思路来源于php框架laravel项目之初借鉴了《goal》
+## 框架特点
+goal 通过容器和服务提供者作为框架的核心，以 contracts 为桥梁，为开发者提供丰富的功能和服务，这点与 laravel 是相似的。
+* 强大的容器
+* 服务提供者
+* 契约精神
 
-#### 软件架构
-软件架构说明
+## 链接（项目初始借鉴对象实现的是同一个理念）
+* [goal 仓库](https://github.com/goal-web/goal)
 
+## 功能特性
 
-#### 安装教程
+* [x] contracts 定义模块接口
+* [x] container 容器实现！！！
+* [x] pipeline 简单但是很强大的洋葱模型的管道
+* [x] application 应用
+    * [x] exceptions 异常处理模块
+* [x] config 配置模块
+* [x] logger 配置模块
+* [x] http http相关模块，请求、响应、中间件等
+    * [x] routing http 路由服务
+* [x] console 命令行模块
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
-    这里输入代码
