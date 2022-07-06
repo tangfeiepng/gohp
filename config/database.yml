@@ -1,0 +1,28 @@
+Grom: #mysql数据库配置
+  UseDbType: "mysql"  # 备选项 mysql 、sqlserver、 postgresql
+  Mysql:
+    IsInitGolobalGormMysql: 0    # 随项目启动为gorm db初始化一个全局 variable.GormDbMysql（完全等于*gorm.Db）,正确配置数据库，该值必须设置为: 1
+    SlowThreshold: 30            # 慢 SQL 阈值(sql执行时间超过此时间单位（秒），就会触发系统日志记录)
+    Write:
+      Host: "mysql"
+      DataBase: "test"
+      Port: 3306
+      Prefix: "t"
+      User: "root"
+      Pass: "123456"
+      Charset: "utf8"
+      SetMaxIdleConns: 10
+      SetMaxOpenConns: 128
+      SetConnMaxLifetime: 60    # 连接不活动时的最大生存时间(秒)
+    IsOpenReadDb: 0                     # 是否开启读写分离配置（1=开启、0=关闭），IsOpenReadDb=1,Read 部分参数有效，否则Read部分参数直接忽略
+    Read:
+      Host: "127.0.0.1"
+      DataBase: "db_goskeleton"
+      Port: 3306                        #注意，非3306，请自行调整
+      Prefix: "wk_"
+      User: "root"
+      Pass: "root"
+      Charset: "utf8"
+      SetMaxIdleConns: 10
+      SetMaxOpenConns: 128
+      SetConnMaxLifetime: 60

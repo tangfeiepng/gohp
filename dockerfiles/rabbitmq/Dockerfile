@@ -1,0 +1,2 @@
+FROM rabbitmq:3.9
+RUN rabbitmq-plugins enable --offline rabbitmq_mqtt rabbitmq_shovel rabbitmq_shovel_management rabbitmq_federation_management rabbitmq_stomp

@@ -1,0 +1,47 @@
+AppDebug: false   # 设置程序所处的模式，debug=true 调试模式，日志优先显示在控制台， debug=false 非调试模式，将写入日志文件
+
+HttpServer:
+  Port: ":8082"
+
+Logs:
+  LogPath: "/storage/logs/"
+  TextType: "json"
+  TimePrecision: "2006-01-02 15:04:05"                         #记录日志时，相关的时间精度，该参数选项：second  、 millisecond ， 分别表示 秒 和 毫秒 ,默认为毫秒级别
+  MaxSize: 10                                           #每个日志的最大尺寸(以MB为单位）， 超过该值，系统将会自动进行切割
+  MaxBackups: 7                                        #保留旧日志最大个数
+  MaxAge: 15                                           #保留旧日志最大天数
+  Compress: false                                      #日志备份时，是否进行压缩
+
+Wechat:
+  Appid: "wxf1ae8c1116947276"
+  Secret: "cba845f670d0811d49d18b8e6191ba15"
+
+Jwt:
+  JwtSecret: "tangfeipeng"
+  ExpireTime: 3 #过期时间已秒计算
+  RefreshExpireTime: 3600 #过期时间已秒计算
+
+Casbin:
+  Prefix: "t"
+  TableName: "casbin_rule"
+  IsInit: true
+  Model: |
+    [request_definition]
+    r = sub, obj, act
+
+    [policy_definition]
+    p = sub, obj, act
+
+    [role_definition]
+    g = _, _
+
+    [policy_effect]
+    e = some(where (p.eft == allow))
+
+    [matchers]
+    m =  g(r.sub, p.sub) && my_func(r.obj, p.obj) && (r.act == p.act|| p.act=="*")
+Redis:
+  isInit: true
+  Host: "redis"
+  Port: "6379"
+  Password: "tangfeipeng"

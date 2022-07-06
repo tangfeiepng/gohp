@@ -1,0 +1,52 @@
+version: "3"
+#docker-compose -f docker-compose-go.yml -p goproject up -d
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - ./conf/conf.d:/etc/nginx/conf.d:rw
+      - ./log:/var/log/nginx:rw
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - net-go
+  mysql:
+    image: mysql
+    volumes:
+      - ./mysql/databases:/var/lib/mysql:rw
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+    networks:
+      - net-go
+  goland:
+    build:
+      context: go
+    volumes:
+      - ../:/var/www/html:rw
+    expose:
+      - "8081"
+      - "8082"
+    tty: true
+    networks:
+      - net-go
+  redis:
+    build:
+      context: redis
+    volumes:
+      - ./redis/data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - net-go
+  rabbitmq:
+    build:
+      context: rabbitmq
+    ports:
+      - "15672:15672"
+    networks:
+      - net-go
+networks:
+  net-go:
