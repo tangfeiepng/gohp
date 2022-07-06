@@ -23,3 +23,4 @@ goal 通过容器和服务提供者作为框架的核心，以 contracts 为桥�
     * [x] routing http 路由服务
 * [x] console 命令行模块
 
+## 如果不够优雅就推倒重来
