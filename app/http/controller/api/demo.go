@@ -8,15 +8,17 @@ import (
 
 type Demo struct {
 }
+type Money struct {
+	Id     int     `json:"id"`
+	Name   string  `json:"name"`
+	Moneys float32 `json:"moneys"`
+}
 
-func (s *Demo) Test(request contract.Request, logger contract.Logger) string {
+func (s *Demo) Test(model contract.Model) interface{} {
 	//测试日志文件
-	//logger.Error("测试", contract.LoggerField{
-	//	Key: "扩展字段",
-	//	Val: "测试",
-	//})
-	panic("sssss")
-	return "我返回的是字符串"
+	var result []map[string]interface{}
+	model.Model(Money{}).Where("id=?", 1).Find(&result)
+	return result
 }
 func (s *Demo) TestOne(request contract.Request) contract.Response {
 	return response.Success("返回成功", request.Query("msg"))

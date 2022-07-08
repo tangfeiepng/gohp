@@ -78,20 +78,28 @@ func (container *Container) MagicFuncCall(magicFunc interface{}, bindArg ...inte
 func (container *Container) judgeArg(reType reflect.Type, bindArg []interface{}) reflect.Value {
 	//判断该方法是否需要反射执行如果不需要则返回
 	var res reflect.Value
+
 	if result := container.Get(reType.String()); result != nil {
 		return reflect.ValueOf(result)
 	}
+
 	//判断外部的参数类型转换后是否可以匹配上内部参数，或者外部参数执行后的返回值是否跟内部参数匹配上，或者不需要转换直接能匹配上内部的参数
 	for _, arg := range bindArg {
 		if reflect.TypeOf(arg).ConvertibleTo(reType) {
 			res = reflect.ValueOf(arg)
 			break
 		}
+		if reflect.TypeOf(arg).Kind() == reflect.Ptr {
+			continue
+		}
 		tem := container.MagicFuncCall(arg)
 		if reflect.TypeOf(tem).ConvertibleTo(reType) {
 			res = reflect.ValueOf(tem)
 			break
 		}
+	}
+	if res.IsValid() == false {
+		panic("没有找到该依赖的实现请检查是否提供服务注册")
 	}
 	return res
 }

@@ -31,5 +31,6 @@ require (
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
-	gorm.io/gorm v1.23.2
+	gorm.io/driver/mysql v1.3.4
+	gorm.io/gorm v1.23.4
 )

@@ -5,6 +5,7 @@ import (
 	"Walker/pkg/config"
 	"Walker/pkg/console"
 	"Walker/pkg/contract"
+	"Walker/pkg/database"
 	"Walker/pkg/example"
 	"Walker/pkg/exception"
 	"Walker/pkg/logger"
@@ -25,6 +26,7 @@ func main() {
 		&config.ServiceProvider{},
 		&logger.ServiceProvider{},
 		&router.ServiceProvider{Routes: []interface{}{routers.Test}},
+		&database.ServiceProvider{},
 		&console.ServiceProvider{},
 		&param.ServiceProvider{},
 		&example.ServiceProvider{},
